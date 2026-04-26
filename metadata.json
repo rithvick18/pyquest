@@ -1,0 +1,7 @@
+{
+  "name": "PyQuest: Immersive Python Learning",
+  "description": "An AI-powered, interactive Python learning platform with real-time assistance, progress tracking, and curated lessons inspired by top educational resources.",
+  "requestFramePermissions": [
+    "microphone"
+  ]
+}
