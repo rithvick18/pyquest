@@ -1,7 +1,6 @@
 import { BaseProvider } from './base';
 import { AIRequestContext, AIResponse, ProviderMetadata, ProviderStatus } from '../types';
 import { ConfigService } from '../config';
-import { LLMRegistry } from '../registry';
 import { AuthenticationError, ProviderError } from '../types/errors';
 
 export class AWSBedrockProvider extends BaseProvider {
@@ -47,6 +46,3 @@ export class AWSBedrockProvider extends BaseProvider {
     return 'ACTIVE';
   }
 }
-
-// Self-register
-LLMRegistry.register(new AWSBedrockProvider());

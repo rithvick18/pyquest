@@ -1,7 +1,6 @@
 import { OpenAICompatibleProvider } from './openaiCompatible';
 import { ProviderMetadata } from '../types';
 import { ConfigService } from '../config';
-import { LLMRegistry } from '../registry';
 
 export class TogetherProvider extends OpenAICompatibleProvider {
   public metadata: ProviderMetadata = {
@@ -28,6 +27,3 @@ export class TogetherProvider extends OpenAICompatibleProvider {
     return config?.model || ConfigService.get().providers.together.defaultModel;
   }
 }
-
-// Self-register
-LLMRegistry.register(new TogetherProvider());

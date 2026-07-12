@@ -2,7 +2,6 @@ import { GoogleGenAI } from '@google/genai';
 import { BaseProvider } from './base';
 import { AIRequestContext, AIResponse, ProviderMetadata, ProviderStatus } from '../types';
 import { ConfigService } from '../config';
-import { LLMRegistry } from '../registry';
 import { AuthenticationError, RateLimitError, TimeoutError, ProviderError } from '../types/errors';
 
 export class GeminiProvider extends BaseProvider {
@@ -129,6 +128,3 @@ export class GeminiProvider extends BaseProvider {
     return new ProviderError(msg, 'gemini', error.status || 500, error);
   }
 }
-
-// Self-register with registry
-LLMRegistry.register(new GeminiProvider());

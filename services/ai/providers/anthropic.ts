@@ -1,7 +1,6 @@
 import { BaseProvider } from './base';
 import { AIRequestContext, AIResponse, ProviderMetadata, ProviderStatus } from '../types';
 import { ConfigService } from '../config';
-import { LLMRegistry } from '../registry';
 import { AuthenticationError, RateLimitError, TimeoutError, ProviderError } from '../types/errors';
 
 export class AnthropicProvider extends BaseProvider {
@@ -141,6 +140,3 @@ export class AnthropicProvider extends BaseProvider {
     return new ProviderError(msg, 'anthropic', 500, error);
   }
 }
-
-// Self-register
-LLMRegistry.register(new AnthropicProvider());

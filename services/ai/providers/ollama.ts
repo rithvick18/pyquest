@@ -1,7 +1,6 @@
 import { OpenAICompatibleProvider } from './openaiCompatible';
 import { ProviderMetadata } from '../types';
 import { ConfigService } from '../config';
-import { LLMRegistry } from '../registry';
 
 export class OllamaProvider extends OpenAICompatibleProvider {
   public metadata: ProviderMetadata = {
@@ -32,6 +31,3 @@ export class OllamaProvider extends OpenAICompatibleProvider {
     return config?.model || ConfigService.get().providers.ollama.defaultModel;
   }
 }
-
-// Self-register
-LLMRegistry.register(new OllamaProvider());
