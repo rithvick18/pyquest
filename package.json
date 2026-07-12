@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "vite build && vite build --ssr services/ai/server/handler.ts --outDir dist-server",
+    "start": "node server.js",
     "preview": "vite preview"
   },
   "dependencies": {

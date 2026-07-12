@@ -11,6 +11,7 @@ import SearchModal from './components/SearchModal';
 import { Lesson, LessonContent as LessonContentType, Progress, Theme, UserStats, Achievement, DEFAULT_ACHIEVEMENTS } from './types';
 import { fetchLessonContent } from './services/geminiService';
 import { CURRICULUM, THEMES } from './constants';
+import AISettingsModal from './components/AISettingsModal';
 
 // Default stats for new users
 const DEFAULT_STATS: UserStats = {
@@ -75,6 +76,7 @@ const App: React.FC = () => {
   const [showThemeMenu, setShowThemeMenu] = useState(false);
   const [showStatsPanel, setShowStatsPanel] = useState(false);
   const [showSearchModal, setShowSearchModal] = useState(false);
+  const [showAISettings, setShowAISettings] = useState(false);
   const [loadError, setLoadError] = useState<string | null>(null);
 
   const { toasts, dismissToast, success, error } = useToast();
@@ -247,6 +249,13 @@ const App: React.FC = () => {
           completedLessonIds={progress.completedLessonIds}
         />
 
+        {/* AI Settings Modal */}
+        <AISettingsModal
+          isOpen={showAISettings}
+          onClose={() => setShowAISettings(false)}
+          currentTheme={currentTheme}
+        />
+
         {/* Sidebar Navigation */}
         <Sidebar
           progress={progress}
@@ -290,6 +299,16 @@ const App: React.FC = () => {
             </div>
 
             <div className="flex items-center gap-6">
+
+              {/* AI Architecture Settings */}
+              <button
+                onClick={() => setShowAISettings(true)}
+                className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[var(--text-secondary)] hover:text-[var(--accent-primary)] transition-colors"
+                title="Configure AI Providers & Models"
+              >
+                <i className="fa-solid fa-sliders"></i>
+                <span className="hidden md:inline">AI Settings</span>
+              </button>
 
               {/* Theme Switcher */}
               <div className="relative">
