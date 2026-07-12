@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Font Awesome Test</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        .icons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .icon {
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #f0f0f0;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Font Awesome 6.4.0 Test</h1>
+    <p>Testing various icons that might trigger the warning...</p>
+
+    <div class="icons">
+        <div class="icon"><i class="fa-solid fa-check"></i></div>
+        <div class="icon"><i class="fa-solid fa-xmark"></i></div>
+        <div class="icon"><i class="fa-solid fa-circle-check"></i></div>
+        <div class="icon"><i class="fa-solid fa-circle-xmark"></i></div>
+        <div class="icon"><i class="fa-solid fa-triangle-exclamation"></i></div>
+        <div class="icon"><i class="fa-solid fa-robot"></i></div>
+        <div class="icon"><i class="fa-solid fa-fire"></i></div>
+        <div class="icon"><i class="fa-solid fa-play"></i></div>
+        <div class="icon"><i class="fa-solid fa-lock"></i></div>
+        <div class="icon"><i class="fa-solid fa-star"></i></div>
+        <div class="icon"><i class="fa-brands fa-python"></i></div>
+        <div class="icon"><i class="fa-brands fa-google"></i></div>
+    </div>
+
+    <h2>Glyph 1376 Test</h2>
+    <p>This warning mentions "glyph 1376" - let's see if we can identify which icon that is...</p>
+
+    <script>
+        // Check if we can identify glyph 1376
+        console.log('Font Awesome 6.4.0 loaded');
+        console.log('Testing for glyph 1376 warning...');
+    </script>
+</body>
+</html>
