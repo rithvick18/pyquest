@@ -2,7 +2,28 @@
 import { GoogleGenAI, Type } from "@google/genai";
 import { Lesson, LessonContent, Source } from "../types";
 
-const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+// Lazy initialization of GoogleGenAI client
+let ai: any = null;
+
+function getAIClient() {
+  if (ai === null) {
+    // Try to get API key from process.env (Vite will replace this at build time)
+    const apiKey = process.env.VITE_GEMINI_API_KEY;
+
+    if (!apiKey) {
+      console.warn("Google Gemini AI client not initialized: API key is missing");
+      return null;
+    }
+    try {
+      ai = new GoogleGenAI({ apiKey });
+      console.log("Google Gemini AI client initialized successfully");
+    } catch (error) {
+      console.error("Failed to initialize Google Gemini AI client:", error);
+      return null;
+    }
+  }
+  return ai;
+}
 
 // Cache for lesson content to avoid redundant API calls
 const CACHE_PREFIX = 'pyquest-lesson-cache-';
@@ -120,8 +141,13 @@ export const fetchLessonContent = async (lesson: Lesson): Promise<LessonContent>
   `;
 
   try {
+    const aiClient = getAIClient();
+    if (!aiClient) {
+      throw new Error("AI service is not available. Please configure the API key.");
+    }
+
     const content = await withRetry(async () => {
-      const response = await ai.models.generateContent({
+      const response = await aiClient.models.generateContent({
         model: "gemini-2.5-flash",
         contents: prompt,
         config: {
@@ -206,8 +232,13 @@ export const getChatResponse = async (
   `;
 
   try {
+    const aiClient = getAIClient();
+    if (!aiClient) {
+      return "AI service is not available. Please configure the API key to use this feature.";
+    }
+
     return await withRetry(async () => {
-      const chat = ai.chats.create({
+      const chat = aiClient.chats.create({
         model: 'gemini-2.5-flash',
         config: {
           systemInstruction,

@@ -71,7 +71,7 @@ pyquest/
 2. Set up environment variables:
    Create a `.env.local` file in the root directory and add your Gemini API key:
    ```
-   GEMINI_API_KEY=your_api_key_here
+   VITE_GEMINI_API_KEY=your_api_key_here
    ```
 
 3. Run the development server:
@@ -131,7 +131,7 @@ npm run preview
 
 ## Environment Variables
 
-- `GEMINI_API_KEY`: Required for AI-powered lesson content and assistant
+- `VITE_GEMINI_API_KEY`: Required for AI-powered lesson content and assistant
 
 ## License
 
