@@ -63,7 +63,7 @@ pyquest/
    ```
 
 2. Set up environment variables:
-   Create a `.env.local` file in the root directory and add your Gemini API key:
+   Create a `.env` file in the root directory and add your Gemini API key:
    ```
    VITE_GEMINI_API_KEY=your_api_key_here
    ```

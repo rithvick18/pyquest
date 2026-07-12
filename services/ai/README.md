@@ -107,7 +107,7 @@ export interface LLMProvider {
 
 ## 4. Configuration Examples
 
-Configure server-side keys inside your `.env` (or `.env.local` during local development):
+Configure server-side keys inside your `.env`:
 
 ```env
 # Selected Default Provider (defaults to 'gemini')
