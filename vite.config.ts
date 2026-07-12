@@ -6,6 +6,14 @@ import { aiApiPlugin } from './services/ai/server/vitePlugin';
 
 export default defineConfig(({ mode }) => {
     const env = loadEnv(mode, '.', '');
+    
+    // Expose all loaded env variables to process.env for server-side code execution
+    for (const key of Object.keys(env)) {
+      if (env[key]) {
+        process.env[key] = env[key];
+      }
+    }
+
     return {
       server: {
         port: 3000,
